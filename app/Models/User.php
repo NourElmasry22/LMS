@@ -58,4 +58,20 @@ class User extends Authenticatable
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
+    public function courses()
+{
+    return $this->belongsToMany(\Modules\Courses\Models\Course::class)
+                ->withPivot('status', 'progress')
+                ->withTimestamps();
+}
+
+public function coursesInProgress()
+{
+    return $this->courses()->wherePivot('status', 'in_progress');
+}
+
+public function completedCourses()
+{
+    return $this->courses()->wherePivot('status', 'completed');
+}
 }

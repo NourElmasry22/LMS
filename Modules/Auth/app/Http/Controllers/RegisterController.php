@@ -19,12 +19,12 @@ class RegisterController extends Controller
             
         ]);
         $user = User::create($validated);
-        Mail::to($user->email)->send(new WelcomeMail());
+       // Mail::to($user->email)->send(new WelcomeMail());
       
 
         Auth::login($user);
 
-        return redirect()->route('home')->with('success', 'Registration successful!');
+        return redirect()->route('dashboard')->with('success', 'Registration successful!');
 
         
     }

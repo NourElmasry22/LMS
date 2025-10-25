@@ -40,5 +40,13 @@ class Course extends Model
      {
           return CourseFactory::new();
     }
+    public function users()
+{
+    return $this->belongsToMany(\App\Models\User::class)
+                ->withPivot('status', 'progress')
+                ->withTimestamps();
+}
+
+
  
 }

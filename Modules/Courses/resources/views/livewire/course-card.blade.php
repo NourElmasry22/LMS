@@ -10,18 +10,18 @@
         class="w-full h-48 object-cover rounded-xl mb-4">
 
       <h3 class="text-lg font-semibold text-gray-900">{{ $course->title }}</h3>
-      <p class="text-sm text-gray-600 mt-1">By {{ $course->instructor_name ?? 'Instructor' }}</p>
       <p class="text-sm text-gray-500 mt-1">Category: {{ $course->category }}</p>
 
-      <div class="mt-4 flex justify-between items-center">
-        <a
-          href="{{ route('courses.details', $course->slug) }}"
-          class="inline-block rounded-full border border-sky-700 bg-sky-700 px-6 py-2 
-                 text-sm font-medium text-white transition focus:ring-2 focus:ring-sky-300 focus:outline-none"
-        >
-          View Details
-        </a>
-      </div>
+      <div class="mt-4 flex items-center">
+    <a
+        href="{{ route('courses.details', $course->slug) }}"
+        class="ml-auto inline-block rounded-full border border-sky-700 bg-sky-700 px-6 py-3
+               text-sm font-medium text-white transition focus:ring-2 focus:ring-sky-300 focus:outline-none"
+    >
+        View Details
+    </a>
+</div>
+
     </div>
   @endforeach
 </div>

@@ -1,4 +1,4 @@
-<section class="py-16 bg-gray-100 shadow-m">
+<section class="py-16 bg-gray-100 shadow-m pb-20">
   <div class="max-w-7xl mx-auto px-6">
     <div class="flex justify-between items-center mb-10">
       <div>

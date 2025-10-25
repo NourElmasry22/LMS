@@ -8,7 +8,7 @@
 >
 
     <!-- Right Sidebar (Lessons List) -->
-    <aside class="w-full lg:w-4/12 bg-gradient-to-b from-gray-800 to-gray-900 p-6 space-y-4">
+    <aside class="w-full lg:w-4/12 bg-gradient-to-b from-gray-800 to-gray-900 p-6 space-y-4 pb-20">
         <h2 class="text-2xl font-bold text-white mb-4 border-b border-gray-700 pb-2">{{ $course->title }}</h2>
 
         <div class="space-y-3 max-h-[calc(100vh-200px)] overflow-y-auto pr-1">
@@ -119,78 +119,40 @@
                 <span x-text="isCompleted(currentLesson) ? 'Completed' : 'Mark as Complete'"></span>
             </button>
 
-            @if($nextLesson = $course->lessons->where('id', '>', $lesson->id)->first())
-                <a
-                    href="{{ route('lessons.show', $nextLesson) }}"
-                    class="inline-flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
-                >
-                    <span>Next Lesson</span>
-                    <svg 
-                        class="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path 
-                            stroke-linecap="round" 
-                            stroke-linejoin="round" 
-                            stroke-width="2" 
-                            d="M9 5l7 7-7 7"
-                        />
-                    </svg>
-                </a>
-            @endif
-            <div class="flex justify-end mt-6">
+           
     @php
         $nextLesson = $course->lessons->where('id', '>', $lesson->id)->first();
     @endphp
 
-```
 @if($nextLesson)
-    <a
-        href="{{ route('lessons.show', $nextLesson) }}"
-        class="inline-flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
+   <a
+    href="{{ route('lessons.show', $nextLesson) }}"
+    class="mt-4 inline-flex items-center space-x-10 px-5 py-3 bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition-colors duration-200"
+>
+    <span>Next Lesson</span>
+    <svg 
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
     >
-        <span>Next Lesson</span>
-        <svg 
-            class="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-        >
-            <path 
-                stroke-linecap="round" 
-                stroke-linejoin="round" 
-                stroke-width="2" 
-                d="M9 5l7 7-7 7"
-            />
-        </svg>
-    </a>
+        <path 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            stroke-width="2" 
+            d="M9 5l7 7-7 7"
+        />
+    </svg>
+</a>
+
 @else
-    <a
-        href="{{ route('home') }}"
-        class="inline-flex items-center space-x-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200"
-    >
-        <span>Finish</span>
-        <svg 
-            class="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-        >
-            <path 
-                stroke-linecap="round" 
-                stroke-linejoin="round" 
-                stroke-width="2" 
-                d="M5 13l4 4L19 7"
-            />
-        </svg>
-    </a>
+<livewire:courses::finish-course-button :course="$course" />
+
 @endif
 
 </div>
 
-        </div>
+     
     </div>
 </main>
 

@@ -4,15 +4,28 @@ namespace Modules\Users\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    
+     public function dashboard()
     {
-        return view('users::index');
+        $user = Auth::user();
+
+        $inProgressCourses = $user->coursesInProgress()->get();
+        $completedCourses = $user->completedCourses()->get();
+        $totalCourses = $user->courses()->count();
+
+        return view('users::index', compact(
+            'user',
+            'inProgressCourses',
+            'completedCourses',
+            'totalCourses'
+        ))->layout('cores::layouts.app');
     }
 
     /**

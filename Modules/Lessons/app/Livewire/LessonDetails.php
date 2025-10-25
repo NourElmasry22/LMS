@@ -18,13 +18,13 @@ class LessonDetails extends Component
         $this->course = $this->lesson->course;
         $this->lessons = $this->course->lessons()->orderBy('order')->get();
 
-        // تحديد ترتيب الدرس الحالي
+        
         $this->currentIndex = $this->lessons->search(fn($l) => $l->id === $this->lesson->id);
     }
 
     public function markComplete()
     {
-        // هنا تقدر تضيف منطق لتحديث حالة إتمام الدرس للمستخدم
+       
         session()->flash('success', 'Lesson marked as complete ✅');
     }
 

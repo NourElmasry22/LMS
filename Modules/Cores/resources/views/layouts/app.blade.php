@@ -13,11 +13,12 @@
     </head>
     <body>
         <livewire:cores::header/>
-        <main>
+        <main >
         
         {{ $slot?? '' }}
         @yield('content')
         </main>
+        
         <livewire:cores::footer />
         @livewireScripts
     </body>

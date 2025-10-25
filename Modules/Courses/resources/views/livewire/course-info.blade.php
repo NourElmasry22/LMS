@@ -1,4 +1,4 @@
-<div class="max-w-6xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden p-6 mt-10">
+<div class="max-w-6xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden p-6 mt-10 pb-20">
     <!-- Course Info Section -->
     <div class="flex flex-col md:flex-row items-center gap-8">
         <!-- Image -->
@@ -18,7 +18,7 @@
             <p class="text-gray-700 leading-relaxed">{{ $course->description }}</p>
 
             <a href="/courses"
-               class="text-blue-500 underline font-medium hover:text-blue-700 transition duration-200 block mt-4">← Back to all courses</a>
+               class="text-blue-500 underline font-medium hover:text-blue-700 transition duration-200 block mt-4"><livewire:courses::enroll-button :course="$course" /></a>
         </div>
     </div>
 
